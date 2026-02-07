@@ -6,7 +6,7 @@ app.use(express.json())
 
 app.get('/', (request, response) => {
     return response.json({
-        message: 'Testando pra ver se deu certo!!'
+        message: 'Realizando o teste utilizando IA.'
     })
 })
 
