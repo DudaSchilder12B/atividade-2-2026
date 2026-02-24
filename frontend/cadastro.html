@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Produto</title>
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Cadastrar Produto</h1>
+
+  <nav>
+    <a href="index.html">Lista</a>
+    <a href="cadastro.html">Cadastrar</a>
+  </nav>
+
+  <form id="form">
+    <input type="text" id="name" placeholder="Nome" required>
+    <input type="number" id="price" placeholder="Preço" required>
+    <input type="text" id="category" placeholder="Categoria">
+    <button type="submit">Cadastrar</button>
+  </form>
+</div>
+
+<script>
+const API = "http://localhost:3000/produtos";
+
+document.getElementById("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+  const category = document.getElementById("category").value;
+
+  await fetch(API, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ name, price, category })
+  });
+
+  alert("Produto cadastrado!");
+  document.getElementById("form").reset();
+});
+</script>
+
+</body>
+</html>
